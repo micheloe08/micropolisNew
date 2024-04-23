@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sucursales extends Model
+class Paquetes extends Model
 {
-    protected $table = 'sucursales';
+    protected $table = 'paquetes';
 
     protected $guarded = [];
 
-    public function paquetes()
+    public function sucursales()
     {
-        return $this->belongsTo(Paquetes::class);
+        return $this->belongsTo(Sucursales::class, 'sucursal_id', 'id');
     }
 }

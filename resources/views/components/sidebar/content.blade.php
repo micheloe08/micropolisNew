@@ -6,6 +6,14 @@
         </x-slot>
     </x-sidebar.link>
 
+    <x-sidebar.dropdown title="Catalogo Sucursales" :active="Str::startsWith(request()->route()->uri(), 'sucursales')" :isActive="request()->routeIs('sucursales')">
+        <x-slot name="icon">
+            <x-heroicon-o-user class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+            <x-sidebar.sublink title="Sucursales" href="{{ route('sucursales') }}"
+            :active="request()->routeIs('sucursales')" />
+    </x-sidebar.dropdown>
+
     <x-sidebar.dropdown title="Catalogo Clientes" :active="Str::startsWith(request()->route()->uri(), 'clientes')" :isActive="request()->routeIs('clientes')">
         <x-slot name="icon">
             <x-heroicon-o-user class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
@@ -14,13 +22,12 @@
             :active="request()->routeIs('clientes')" />
     </x-sidebar.dropdown>
 
-    <x-sidebar.dropdown title="Catalogo Productos" :active="Str::startsWith(request()->route()->uri(), 'productos')">
+    <x-sidebar.dropdown title="Catalogo Paquetes" :active="Str::startsWith(request()->route()->uri(), 'paquetes')">
         <x-slot name="icon">
             <x-carbon-product class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
-
-        <x-sidebar.sublink title="Categorias" href="{{ route('categorias') }}"
-            :active="request()->routeIs('categorias')" />
+            <x-sidebar.sublink title="Paquetes" href="{{ route('paquetes') }}"
+                :active="request()->routeIs('paquetes')" />
     </x-sidebar.dropdown>
 
 

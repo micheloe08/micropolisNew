@@ -27,7 +27,9 @@ Route::middleware([
     })->name('dashboard');
     Route::view('cliente', 'clientes.index')
     ->name('clientes');
-    Route::view('categorias', 'categorias.index')
-    ->name('categorias');
+    Route::view('sucursales', 'sucursales.index')
+    ->name('sucursales');
+    Route::view('paquetes', 'paquetes.index')
+    ->name('paquetes');
 });
 

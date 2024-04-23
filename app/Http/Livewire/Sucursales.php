@@ -3,35 +3,35 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Clientes as Cliente;
+use App\Models\Sucursales as Sucursal;
 
-class Clientes extends Component
+class Sucursales extends Component
 {
-    public $data, $nombre, $correo, $telefono, $selected_id;
+    public $sucursales, $nombre, $telefono, $selected_id;
     public $updateMode = false;
 
     public function render()
     {
-        $this->data = Cliente::all();
-        return view('livewire.Clientes.clientes');
+        $this->sucursales = Sucursal::all();
+        return view('livewire.sucursales.index');
     }
 
-    private function resetInput()
+    public function resetInput()
     {
         $this->nombre = null;
-        $this->correo = null;
         $this->telefono = null;
     }
 
     public function store()
     {
         $this->validate([
-            'nombre' => 'required|min:2'
+            'nombre' => 'required',
+            'telefono' => 'required|min:10|max:10'
         ]);
-        Cliente::create([
+
+        Sucursal::create([
             'nombre' => $this->nombre,
-            'correo' => $this->correo,
-            'telefono' => $this->telefono,
+            'telefono' => $this->telefono
         ]);
 
         $this->resetInput();
@@ -39,15 +39,11 @@ class Clientes extends Component
 
     public function edit($id)
     {
-        $record = Cliente::findOrFail($id);
-
+        $record = Sucursal::findOrFail($id);
         $this->selected_id = $id;
         $this->nombre = $record->nombre;
-        $this->correo = $record->correo;
         $this->telefono = $record->telefono;
-
         $this->updateMode = true;
-
     }
 
     public function update()
@@ -56,13 +52,12 @@ class Clientes extends Component
             'selected_id' => 'required|numeric'
         ]);
 
-        if ($this->selected_id)
-        {
-            $record = Cliente::find($this->selected_id);
+        if($this->selected_id) {
+
+            $record = Sucursal::find($this->selected_id);
             $record->update([
-            'nombre' => $this->nombre,
-            'correo' => $this->correo,
-            'telefono' => $this->telefono,
+                'nombre' => $this->nombre,
+                'telefono' => $this->telefono
             ]);
 
             $this->resetInput();
@@ -72,8 +67,8 @@ class Clientes extends Component
 
     public function destroy($id)
     {
-        if ($id) {
-            $record = Cliente::where('id', $id);
+        if($id) {
+            $record = Sucursal::where('id', $id);
             $record->delete();
         }
     }

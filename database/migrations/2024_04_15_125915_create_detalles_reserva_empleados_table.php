@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sucursales', function (Blueprint $table) {
+        Schema::create('detalles_reserva_empleados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('telefono');
+            $table->foreignId('reserva_id')->constrained('reservaciones');
+            $table->foreignId('empleado_id')->constrained('empleados');
+            $table->foreignId('labor_id')->constrained('labores');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sucursales');
+        Schema::dropIfExists('detalles_reserva_empleados');
     }
 };
