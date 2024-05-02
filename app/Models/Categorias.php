@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Opciones extends Model
+class Categorias extends Model
 {
-    protected $table = 'opciones';
+    protected $table = 'categorias';
 
     protected $guarded = [];
 
-    public function categorias()
+    public function opciones()
     {
-        return $this->belongsTo(Categorias::class, 'categoria_id', 'id');
+        return $this->belongsTo(Opciones::class);
     }
 }

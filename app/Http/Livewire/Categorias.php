@@ -3,12 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\CategoriaProducto;
+use App\Models\Categorias as CategoriaProducto;
 
 class Categorias extends Component
 {
 
-    public $data, $descripcion, $selected_id, $clave_categoria;
+    public $data, $descripcion, $selected_id, $clave;
     public $updateMode = false;
 
     public function render()
@@ -20,17 +20,17 @@ class Categorias extends Component
     private function resetInput()
     {
         $this->descripcion = null;
-        $this->clave_categoria = null;
+        $this->clave = null;
     }
 
     public function store()
     {
         $this->validate([
-            'clave_categoria' => 'required|min:2',
+            'clave' => 'required|min:2',
             'descripcion' => 'required|min:2'
         ]);
         CategoriaProducto::create([
-            'clave_categoria' => $this->clave_categoria,
+            'clave' => $this->clave,
             'descripcion' => $this->descripcion
         ]);
 
@@ -43,7 +43,7 @@ class Categorias extends Component
 
         $this->selected_id = $id;
         $this->descripcion = $record->descripcion;
-        $this->clave_categoria = $record->clave_categoria;
+        $this->clave = $record->clave_categoria;
 
         $this->updateMode = true;
 
@@ -53,7 +53,7 @@ class Categorias extends Component
     {
         $this->validate([
             'selected_id' => 'required|numeric',
-            'clave_categoria' => 'required|min:2',
+            'clave' => 'required|min:2',
             'descripcion' => 'required|min:2'
         ]);
 
@@ -61,7 +61,7 @@ class Categorias extends Component
         {
             $record = CategoriaProducto::find($this->selected_id);
             $record->update([
-                'clave_categoria' => $this->clave_categoria,
+                'clave' => $this->clave_categoria,
                 'descripcion' => $this->descripcion
             ]);
 
