@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->date('fecha_evento');
             $table->time('hora_evento');
-            $table->string('comida');
+            $table->string('comida_infantil');
+            $table->string('comida_adulto')->nullable();
             $table->string('pastel_personalizado', 250)->nullable();
             $table->string('piñata', 250)->nullable();
             $table->string('thermos', 250)->nullable();
@@ -30,7 +31,11 @@ return new class extends Migration
             $table->string('manteles_papel', 250)->nullable();
             $table->string('centros_mesa', 250)->nullable();
             $table->string('snacks_personalizados', 250)->nullable();
-            $table->integer('invitados');
+            $table->boolean('area_teens')->nullable()->default(0);
+            $table->integer('invitados_adicionales')->nullable()->default(0);
+            $table->string('comprobante_anticipo')->nullable();
+            $table->boolean('pagado')->nullable()->default(0);
+            $table->text('comentarios');
             $table->timestamps();
         });
     }

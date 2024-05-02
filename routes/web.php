@@ -31,5 +31,17 @@ Route::middleware([
     ->name('sucursales');
     Route::view('paquetes', 'paquetes.index')
     ->name('paquetes');
+    Route::view('empleados', 'empleados.index')
+    ->name('empleados');
+    Route::view('opciones', 'opciones.index')
+    ->name('opciones');
+    Route::view('paqueteOpciones', 'paqueteOpciones.index')
+    ->name('paqueteOpciones');
+    Route::view('reservaciones', 'reservaciones.index')
+    ->name('reservaciones');
+    Route::view('labores', 'labores.index')
+    ->name('labores');
+    Route::view('categorias', 'categorias.index')
+    ->name('categorias');
 });
 
