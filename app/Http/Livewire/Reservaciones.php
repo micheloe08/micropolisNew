@@ -27,7 +27,7 @@ class Reservaciones extends Component
 
     public function show($id)
     {
-        $this->detalles = DB::select('select paquetes.descripcion as paquete, su.nombre as sucursal, users.name as usuario, cli.nombre as cliente, pa.fecha_evento, pa.hora_evento, pa.comida, pa.pastel_personalizado, pa.piñata, pa.thermos, pa.candybar, pa.manteles_tela, pa.manteles_papel, pa.centros_mesa, pa.snacks_personalizados, pa.invitados
+        $this->detalles = DB::select('select paquetes.descripcion as paquete, su.nombre as sucursal, users.name as usuario, cli.nombre as cliente, pa.fecha_evento, pa.hora_evento, pa.comida_infantil, pa.comida_adulto, pa.area_teens, pa.comprobante_anticipo, pa.pastel_personalizado, pa.piñata, pa.thermos, pa.candybar, pa.manteles_tela, pa.manteles_papel, pa.centros_mesa, pa.snacks_personalizados, pa.invitados_adicionales, pa.pagado, pa.comentarios
         from reservaciones pa
         inner join paquetes on pa.paquete_id = paquetes.id inner join sucursales su on pa.sucursal_id = su.id
         inner join users on pa.user_id = users.id
