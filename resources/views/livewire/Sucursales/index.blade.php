@@ -1,5 +1,4 @@
 <div>
-
     @if($updateMode)
         @include('livewire.Sucursales.update')
     @else
