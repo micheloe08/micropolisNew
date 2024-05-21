@@ -12,6 +12,6 @@ class Labor extends Component
     public function render()
     {
         $this->data = Labores::all();
-        return view('livewire.labor.labor');
+        return view('livewire.Labor.labor');
     }
 }

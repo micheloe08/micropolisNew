@@ -14,7 +14,7 @@
             :active="request()->routeIs('sucursales')" />
     </x-sidebar.dropdown>
 
-    <x-sidebar.dropdown title="Catalogo Clientes" :active="Str::startsWith(request()->route()->uri(), 'reservaciones')">
+    <x-sidebar.dropdown title="Catalogo Clientes" :active="Str::startsWith(request()->route()->uri(), 'clientes')">
         <x-slot name="icon">
             <x-heroicon-o-user class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
