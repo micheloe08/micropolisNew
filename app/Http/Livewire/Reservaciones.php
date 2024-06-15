@@ -40,6 +40,7 @@ class Reservaciones extends Component
         inner join clientes cli on pa.cliente_id = cli.id
         where pa.id = :id', ['id' => $id]);
         $this->mostrarDetalles = true;
+        $this->render();
     }
 
     public function armar()
