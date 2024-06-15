@@ -13,7 +13,7 @@ class Sucursales extends Component
     public function render()
     {
         $this->sucursales = Sucursal::all();
-        return view('livewire.sucursales.index');
+        return view('livewire.Sucursales.index');
     }
 
     public function resetInput()
